@@ -1,0 +1,181 @@
+{
+  "lastUpdated": "2026-05-21",
+  "items": [
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "productName": "カップ麺 各種",
+      "company": "日清食品・東洋水産 他",
+      "category": "food",
+      "increaseRate": 0.10,
+      "increaseDate": "2026-06-01",
+      "reason": "原材料・包材高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 220
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000002",
+      "productName": "食パン 各種",
+      "company": "山崎製パン・敷島製パン 他",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-06-01",
+      "reason": "小麦粉・油脂高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 260
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000003",
+      "productName": "マヨネーズ",
+      "company": "キユーピー・味の素 他",
+      "category": "food",
+      "increaseRate": 0.12,
+      "increaseDate": "2026-06-01",
+      "reason": "食用油・鶏卵高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 350
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000004",
+      "productName": "冷凍食品 各種",
+      "company": "ニチレイ・味の素冷凍食品 他",
+      "category": "food",
+      "increaseRate": 0.09,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 400
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000005",
+      "productName": "焼酎 各種",
+      "company": "宝酒造・サッポロビール 他",
+      "category": "food",
+      "increaseRate": 0.07,
+      "increaseDate": "2026-07-01",
+      "reason": "アルコール税・原料高",
+      "source": "帝国データバンク",
+      "referencePrice": 1200
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000006",
+      "productName": "みそ・しょうゆ",
+      "company": "マルコメ・キッコーマン 他",
+      "category": "food",
+      "increaseRate": 0.10,
+      "increaseDate": "2026-06-01",
+      "reason": "大豆・小麦高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 300
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000007",
+      "productName": "パックご飯",
+      "company": "サトウ食品・テーブルマーク 他",
+      "category": "food",
+      "increaseRate": 0.15,
+      "increaseDate": "2026-06-01",
+      "reason": "米価格高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 200
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000008",
+      "productName": "清涼飲料水 各種",
+      "company": "コカ・コーラ・サントリー 他",
+      "category": "food",
+      "increaseRate": 0.06,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・容器高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 160
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000009",
+      "productName": "牛丼 並盛",
+      "company": "吉野家",
+      "category": "dining",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-06-01",
+      "reason": "牛肉・人件費高騰",
+      "source": "各社公式",
+      "referencePrice": 500
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000010",
+      "productName": "ハンバーガー 各種",
+      "company": "日本マクドナルド",
+      "category": "dining",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・人件費",
+      "source": "各社公式",
+      "referencePrice": 280
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000011",
+      "productName": "電気料金（規制料金）",
+      "company": "東京電力・関西電力 他",
+      "category": "utilities",
+      "increaseRate": 0.04,
+      "increaseDate": "2026-06-01",
+      "reason": "燃料費調整",
+      "source": "各電力会社",
+      "referencePrice": 8000
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000012",
+      "productName": "都市ガス料金",
+      "company": "東京ガス・大阪ガス 他",
+      "category": "utilities",
+      "increaseRate": 0.03,
+      "increaseDate": "2026-06-01",
+      "reason": "原料費調整",
+      "source": "各ガス会社",
+      "referencePrice": 5000
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000013",
+      "productName": "シャンプー・リンス 各種",
+      "company": "花王・P&G・資生堂 他",
+      "category": "daily",
+      "increaseRate": 0.10,
+      "increaseDate": "2026-06-01",
+      "reason": "原材料・包材高騰",
+      "source": "各社公式",
+      "referencePrice": 600
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000014",
+      "productName": "ティッシュペーパー",
+      "company": "大王製紙・日本製紙クレシア 他",
+      "category": "daily",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "パルプ・輸送費高騰",
+      "source": "各社公式",
+      "referencePrice": 300
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000015",
+      "productName": "洗濯洗剤 各種",
+      "company": "花王・ライオン 他",
+      "category": "daily",
+      "increaseRate": 0.12,
+      "increaseDate": "2026-06-01",
+      "reason": "石油化学原料高騰",
+      "source": "各社公式",
+      "referencePrice": 500
+    },
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000016",
+      "productName": "タクシー初乗り料金",
+      "company": "各タクシー会社",
+      "category": "transport",
+      "increaseRate": 0.10,
+      "increaseDate": "2026-07-01",
+      "reason": "燃料費・人件費",
+      "source": "国土交通省",
+      "referencePrice": 500
+    }
+  ]
+}
