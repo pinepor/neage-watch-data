@@ -2,6 +2,83 @@
   "lastUpdated": "2026-05-21",
   "items": [
     {
+      "id": "a1b2c3d4-0004-0004-0004-000000000401",
+      "productName": "バター・マーガリン",
+      "company": "雪印メグミルク・明治 他",
+      "category": "food",
+      "increaseRate": 0.10,
+      "increaseDate": "2026-04-01",
+      "reason": "生乳・原料高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 500
+    },
+    {
+      "id": "a1b2c3d4-0004-0004-0004-000000000402",
+      "productName": "缶詰・瓶詰 各種",
+      "company": "明治・ハインツ 他",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-04-01",
+      "reason": "原材料・包材高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 200
+    },
+    {
+      "id": "a1b2c3d4-0004-0004-0004-000000000403",
+      "productName": "電車・バス運賃",
+      "company": "各交通事業者",
+      "category": "transport",
+      "increaseRate": 0.06,
+      "increaseDate": "2026-04-01",
+      "reason": "エネルギー・人件費高騰",
+      "source": "国土交通省",
+      "referencePrice": 240
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000501",
+      "productName": "チョコレート 各種",
+      "company": "明治・ロッテ・森永 他",
+      "category": "food",
+      "increaseRate": 0.12,
+      "increaseDate": "2026-05-01",
+      "reason": "カカオ・砂糖高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 180
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000502",
+      "productName": "ヨーグルト 各種",
+      "company": "明治・森永乳業 他",
+      "category": "food",
+      "increaseRate": 0.09,
+      "increaseDate": "2026-05-01",
+      "reason": "生乳価格高騰",
+      "source": "帝国データバンク",
+      "referencePrice": 150
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000503",
+      "productName": "紙おむつ 各種",
+      "company": "ユニ・チャーム・P&G 他",
+      "category": "daily",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-05-01",
+      "reason": "パルプ・樹脂高騰",
+      "source": "各社公式",
+      "referencePrice": 2500
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000504",
+      "productName": "牛乳 各種",
+      "company": "明治・森永乳業・雪印 他",
+      "category": "food",
+      "increaseRate": 0.07,
+      "increaseDate": "2026-05-01",
+      "reason": "生乳供給不足・輸送費",
+      "source": "帝国データバンク",
+      "referencePrice": 220
+    },
+    {
       "id": "a1b2c3d4-0001-0001-0001-000000000001",
       "productName": "カップ麺 各種",
       "company": "日清食品・東洋水産 他",
