@@ -3,15 +3,20 @@
 値上がりウォッチ 月次データ更新スクリプト
 毎月1日に GitHub Actions から自動実行される
 
-ブログ構造 (neage.hateblo.jp):
-  タイトル: 「食品｜X月から値上げするもの一覧（2026年版）」
+ソース1: neage.hateblo.jp
+  月別記事: 「食品｜X月から値上げするもの一覧（2026年版）」
+  まとめ記事: 「2026年の値上げまとめ」「2026年1〜9月 値上げまとめ」
   本文:
     カテゴリ名（「食品」「お酒／アルコール」など）
     ■会社名
     製品名1
     製品名2
     ≫ 詳細はこちら
-    （次の会社ブロックへ続く）
+    まとめ記事追加: 月見出し（「1月」「2月」等）→ ■会社名 → 製品名
+
+ソース2: NHK経済 RSS
+  URL: https://www3.nhk.or.jp/rss/news/cat5.xml
+  非食品の値上げニュースをカテゴリ別に取得
 """
 
 import json
@@ -26,13 +31,16 @@ TODAY = datetime.now(JST)
 DATA_PATH = Path(__file__).parent.parent / "prices.json"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NeageWatchBot/1.0)"}
 
+NHK_RSS_URL = "https://www3.nhk.or.jp/rss/news/cat5.xml"
+
 CATEGORY_MAP = [
     (["食品", "飲料", "調味料", "缶詰", "冷凍", "乳製品", "菓子", "お米", "パン", "麺"], "food"),
     (["お酒", "アルコール", "ビール", "ワイン", "日本酒", "焼酎", "酒"], "food"),
     (["外食", "ファスト", "レストラン", "牛丼", "ラーメン", "カフェ", "ファミレス", "飲食"], "dining"),
-    (["日用品", "洗剤", "シャンプー", "ティッシュ", "おむつ", "化粧品", "衛生"], "daily"),
+    (["日用品", "洗剤", "シャンプー", "ティッシュ", "おむつ", "化粧品", "衛生",
+      "製紙", "紙", "ペーパー", "トイレ", "キッチン", "住設", "住宅設備", "家具"], "daily"),
     (["光熱", "電気", "ガス", "水道", "電力"], "utilities"),
-    (["交通", "バス", "電車", "タクシー", "鉄道", "運賃"], "transport"),
+    (["交通", "バス", "電車", "タクシー", "鉄道", "運賃", "郵便", "宅配", "配送", "物流"], "transport"),
 ]
 
 DEFAULT_PRICES = {
@@ -44,9 +52,20 @@ DEFAULT_PRICES = {
     "other": 300,
 }
 
-# これらの文字列を含む行はスキップ
+# NHK RSS: 除外キーワード（株価・金融・為替ニュース）
+NHK_EXCLUDE = [
+    "株価", "日経平均", "利上げ", "政策金利", "為替", "円安", "円高",
+    "金利", "物価指数", "CPI", "ダウ", "ナスダック", "FOMC",
+]
+
+# NHK RSS: 値上げ判定キーワード
+NHK_INCLUDE = [
+    "値上げ", "値上がり", "引き上げ", "料金改定", "価格改定",
+]
+
+# スキップ行パターン
 SKIP_PATTERNS = [
-    "≫ 詳細はこちら",
+    "≫",
     "更新してます",
     "まとめました",
     "一覧にまとめました",
@@ -58,7 +77,12 @@ SKIP_PATTERNS = [
     "参考文献",
     "値上げまとめサイト",
     "広告",
+    "価格改定の詳細",
 ]
+
+# まとめ記事: 月見出しパターン
+_MONTH_ONLY = re.compile(r"^(\d{1,2})月$")
+_MONTH_IN_LINE = re.compile(r"^(\d{1,2})月(?:から?値上[げがり]|の値上[げがり])")
 
 
 def fetch_html(url: str) -> str | None:
@@ -78,24 +102,34 @@ def detect_category(text: str) -> str | None:
     return None
 
 
-def parse_article_items(url: str, increase_date: str, default_category: str) -> list[dict]:
-    """記事本文から品目リストを抽出（■会社名 + 製品名行の構造）"""
-    html = fetch_html(url)
-    if not html:
-        return []
-
-    # entry-content ブロックを抽出
+def _extract_body_lines(html: str) -> list[str]:
+    """entry-content ブロックをテキスト行に変換"""
     body_match = re.search(
-        r'class="entry-content[^"]*"(.*?)(?:class="entry-footer|id="comments")',
+        r'class="entry-content[^"]*"(.*?)(?:class="entry-footer|id="comments"|<footer)',
         html, re.DOTALL
     )
     if not body_match:
         return []
+    text = re.sub(r"<[^>]+>", "\n", body_match.group(1))
+    lines = []
+    for l in text.split("\n"):
+        l = l.strip()
+        if not l:
+            continue
+        # HTML残骸・URLは除外
+        if l.startswith("<") or l.startswith("http"):
+            continue
+        lines.append(l)
+    return lines
 
-    body = body_match.group(1)
-    text = re.sub(r"<[^>]+>", "\n", body)
-    lines = [l.strip() for l in text.split("\n") if l.strip()]
 
+def parse_article_items(url: str, increase_date: str, default_category: str) -> list[dict]:
+    """月別記事から品目リストを抽出（■会社名 + 製品名行の構造）"""
+    html = fetch_html(url)
+    if not html:
+        return []
+
+    lines = _extract_body_lines(html)
     items: list[dict] = []
     current_company: str | None = None
     current_category = default_category
@@ -103,36 +137,16 @@ def parse_article_items(url: str, increase_date: str, default_category: str) -> 
     for line in lines:
         if len(line) < 2:
             continue
-
-        # スキップ行（≫ 詳細はこちら など）
         if any(p in line for p in SKIP_PATTERNS):
             current_company = None
             continue
-
-        # 会社名行（■で始まる）
         if line.startswith("■"):
             current_company = line[1:].strip()
             continue
-
-        # 会社が設定されている → 製品名行
         if current_company:
-            items.append({
-                "id": str(uuid.uuid5(
-                    uuid.NAMESPACE_URL,
-                    current_company + "|" + line + "|" + increase_date
-                )),
-                "productName": line[:40],
-                "company": current_company[:30],
-                "category": current_category,
-                "increaseRate": 0.08,
-                "increaseDate": increase_date,
-                "reason": "原材料・物流費高騰",
-                "source": "値上げまとめ（neage.hateblo.jp）",
-                "referencePrice": DEFAULT_PRICES.get(current_category, 300),
-            })
+            items.append(_make_item(line, current_company, current_category,
+                                    increase_date, "値上げまとめ（neage.hateblo.jp）"))
             continue
-
-        # カテゴリヘッダー候補（会社未設定の状態で来たテキスト行）
         cat = detect_category(line)
         if cat:
             current_category = cat
@@ -140,9 +154,151 @@ def parse_article_items(url: str, increase_date: str, default_category: str) -> 
     return items
 
 
-def scan_archives() -> list[tuple[str, str, str, str]]:
-    """過去4ヶ月のアーカイブから「X月から値上げするもの一覧」記事を収集"""
-    articles: list[tuple[str, str, str, str]] = []
+def parse_summary_article(url: str, article_year: int) -> list[dict]:
+    """まとめ記事（「2026年の値上げまとめ」等）から全月の品目リストを抽出
+    neage.hateblo.jp は食品専門のためカテゴリは常に food"""
+    html = fetch_html(url)
+    if not html:
+        return []
+
+    lines = _extract_body_lines(html)
+    items: list[dict] = []
+    current_company: str | None = None
+    current_month: int | None = None
+
+    for line in lines:
+        if len(line) < 2:
+            continue
+        if any(p in line for p in SKIP_PATTERNS):
+            current_company = None
+            continue
+
+        # 月見出し検出（「1月」「3月から値上げ」等）
+        m = _MONTH_ONLY.match(line) or _MONTH_IN_LINE.match(line)
+        if m:
+            current_month = int(m.group(1))
+            current_company = None
+            continue
+
+        if line.startswith("■"):
+            current_company = line[1:].strip()
+            continue
+
+        if current_company and current_month:
+            increase_date = f"{article_year}-{current_month:02d}-01"
+            items.append(_make_item(line, current_company, "food",
+                                    increase_date, "値上げまとめ（neage.hateblo.jp）"))
+
+    return items
+
+
+def _make_item(product_line: str, company: str, category: str,
+               increase_date: str, source: str) -> dict:
+    return {
+        "id": str(uuid.uuid5(
+            uuid.NAMESPACE_URL,
+            company + "|" + product_line + "|" + increase_date
+        )),
+        "productName": product_line[:40],
+        "company": company[:30],
+        "category": category,
+        "increaseRate": 0.08,
+        "increaseDate": increase_date,
+        "reason": "原材料・物流費高騰",
+        "source": source,
+        "referencePrice": DEFAULT_PRICES.get(category, 300),
+    }
+
+
+def fetch_nhk_rss() -> list[dict]:
+    """NHK経済 RSS から非食品値上げ情報を抽出"""
+    print("  NHK RSS 取得中...")
+    raw = fetch_html(NHK_RSS_URL)
+    if not raw:
+        print("  [warn] NHK RSS 取得失敗")
+        return []
+
+    # NHK RSS は名前空間付きでET が失敗するため正規表現でパース
+    item_blocks = re.findall(r"<item>(.*?)</item>", raw, re.DOTALL)
+
+    items: list[dict] = []
+    for block in item_blocks:
+        title_m = re.search(r"<title[^>]*>(.*?)</title>", block, re.DOTALL)
+        if not title_m:
+            continue
+        title = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", title_m.group(1)).strip()
+
+        # 除外・包含フィルター
+        if any(kw in title for kw in NHK_EXCLUDE):
+            continue
+        if not any(kw in title for kw in NHK_INCLUDE):
+            continue
+
+        # カテゴリ判定（食品は neage.hateblo.jp でカバー済み → 除外）
+        cat = detect_category(title)
+        if cat == "food":
+            continue
+        if cat is None:
+            cat = "other"
+
+        # 会社名を抽出（タイトル先頭）
+        company_m = re.match(r"^(.+?)[　 　](?=\d+月|が|は|も|と|など|の[値料価])", title)
+        if company_m:
+            company = company_m.group(1).strip()
+        else:
+            company = re.split(r"[　 　が]", title)[0]
+        company = company[:30]
+        if len(company) < 2:
+            continue
+
+        # 値上げ月を抽出
+        month_m = re.search(r"(\d{1,2})月", title)
+        if month_m:
+            target_month = int(month_m.group(1))
+            target_year = TODAY.year
+            # 既に過ぎた月番号なら翌年
+            if target_month < TODAY.month:
+                target_year = TODAY.year + 1
+        else:
+            # 月不明 → 翌月
+            target_month = TODAY.month + 1
+            target_year = TODAY.year
+            if target_month > 12:
+                target_month = 1
+                target_year += 1
+
+        increase_date = f"{target_year}-{target_month:02d}-01"
+
+        # 製品名: タイトルから会社名部分を除いた説明
+        product = re.sub(r"^.+?[　 　]", "", title, count=1)
+        product = product[:40] if product else title[:40]
+
+        items.append({
+            "id": str(uuid.uuid5(
+                uuid.NAMESPACE_URL,
+                company + "|" + title + "|" + increase_date
+            )),
+            "productName": product,
+            "company": company,
+            "category": cat,
+            "increaseRate": 0.05,
+            "increaseDate": increase_date,
+            "reason": "原材料・物流費高騰",
+            "source": "NHK経済ニュース",
+            "referencePrice": DEFAULT_PRICES.get(cat, 300),
+        })
+
+    print(f"    → {len(items)}件")
+    return items
+
+
+def scan_archives() -> list[tuple[str, str, str, str, bool]]:
+    """過去4ヶ月のアーカイブから値上げ関連記事を収集
+    Returns: (url, meta, default_cat, title, is_summary)
+      月別記事: meta = increase_date ("YYYY-MM-DD")
+      まとめ記事: meta = article_year ("2026")
+    """
+    articles: list[tuple[str, str, str, str, bool]] = []
     seen_urls: set[str] = set()
 
     y, m = TODAY.year, TODAY.month
@@ -151,13 +307,11 @@ def scan_archives() -> list[tuple[str, str, str, str]]:
         print(f"  スキャン: {y:04d}/{m:02d}")
         html = fetch_html(archive_url)
         if html:
-            # 記事URL＋タイトルリンクを抽出
             pattern = (
                 r'href="(https://neage\.hateblo\.jp/entry/\d{4}/\d{2}/\d{2}/[^"]+)"'
                 r'[^>]*class="entry-title-link"[^>]*>(.*?)</a>'
             )
             matches = re.findall(pattern, html, re.DOTALL)
-            # フォールバック: class順序が違う場合
             if not matches:
                 pattern2 = (
                     r'class="entry-title-link"[^>]*'
@@ -170,19 +324,27 @@ def scan_archives() -> list[tuple[str, str, str, str]]:
                 if link in seen_urls:
                     continue
                 title = re.sub(r"<[^>]+>", "", raw_title).strip()
-                mo = re.search(r"(\d+)月から値上げ", title)
-                if not mo:
-                    continue
-                target_month = int(mo.group(1))
-                # 対象年を推定: 当月より前の月番号なら翌年
-                target_year = y if target_month >= m else y + 1
-                increase_date = f"{target_year}-{target_month:02d}-01"
-                default_cat = detect_category(title) or "food"
-                seen_urls.add(link)
-                articles.append((link, increase_date, default_cat, title))
-                print(f"    発見: 「{title}」→ {increase_date}")
 
-        # 前月へ
+                # 月別記事
+                mo = re.search(r"(\d+)月から値上げ", title)
+                if mo:
+                    target_month = int(mo.group(1))
+                    target_year = y if target_month >= m else y + 1
+                    increase_date = f"{target_year}-{target_month:02d}-01"
+                    default_cat = detect_category(title) or "food"
+                    seen_urls.add(link)
+                    articles.append((link, increase_date, default_cat, title, False))
+                    print(f"    月別: 「{title}」→ {increase_date}")
+                    continue
+
+                # まとめ記事（「2026年の値上げまとめ」「2026年1〜9月値上げまとめ」等）
+                yr_m = re.search(r"(\d{4})年", title)
+                if yr_m and re.search(r"値上[げがり]まとめ", title):
+                    article_year = yr_m.group(1)
+                    seen_urls.add(link)
+                    articles.append((link, article_year, "food", title, True))
+                    print(f"    まとめ: 「{title}」（{article_year}年）")
+
         m -= 1
         if m == 0:
             m = 12
@@ -227,17 +389,28 @@ def main():
     existing = load_existing()
     print(f"  現在のデータ: {len(existing['items'])}件")
 
+    # --- neage.hateblo.jp ---
     articles = scan_archives()
     print(f"  対象記事数: {len(articles)}件")
 
     new_items: list[dict] = []
-    for url, increase_date, default_cat, title in articles:
+    for url, meta, default_cat, title, is_summary in articles:
         print(f"  取得中: 「{title}」")
-        items = parse_article_items(url, increase_date, default_cat)
+        if is_summary:
+            items = parse_summary_article(url, int(meta))
+        else:
+            items = parse_article_items(url, meta, default_cat)
         print(f"    → {len(items)}品目")
         new_items.extend(items)
 
-    print(f"  スクレイプ合計: {len(new_items)}品目")
+    print(f"  neage 合計: {len(new_items)}品目")
+
+    # --- NHK経済 RSS ---
+    nhk_items = fetch_nhk_rss()
+    new_items.extend(nhk_items)
+
+    print(f"  全ソース合計: {len(new_items)}品目")
+
     merged = merge(existing["items"], new_items)
 
     output = {
