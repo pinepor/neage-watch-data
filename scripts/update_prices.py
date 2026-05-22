@@ -80,6 +80,11 @@ SKIP_PATTERNS = [
     "価格改定の詳細",
 ]
 
+# 品目名として無効な行（単体で出現する場合にスキップ）
+INVALID_PRODUCT_PATTERNS = re.compile(
+    r"^(など|その他|上記以外|各種|詳細|以上|参照|参考|〃|〜|・)$"
+)
+
 # まとめ記事: 月見出しパターン
 _MONTH_ONLY = re.compile(r"^(\d{1,2})月$")
 _MONTH_IN_LINE = re.compile(r"^(\d{1,2})月(?:から?値上[げがり]|の値上[げがり])")
@@ -144,8 +149,9 @@ def parse_article_items(url: str, increase_date: str, default_category: str) -> 
             current_company = line[1:].strip()
             continue
         if current_company:
-            items.append(_make_item(line, current_company, current_category,
-                                    increase_date, "値上げまとめ（neage.hateblo.jp）"))
+            if not INVALID_PRODUCT_PATTERNS.match(line):
+                items.append(_make_item(line, current_company, current_category,
+                                        increase_date, "値上げまとめ（neage.hateblo.jp）"))
             continue
         cat = detect_category(line)
         if cat:
@@ -185,9 +191,10 @@ def parse_summary_article(url: str, article_year: int) -> list[dict]:
             continue
 
         if current_company and current_month:
-            increase_date = f"{article_year}-{current_month:02d}-01"
-            items.append(_make_item(line, current_company, "food",
-                                    increase_date, "値上げまとめ（neage.hateblo.jp）"))
+            if not INVALID_PRODUCT_PATTERNS.match(line):
+                increase_date = f"{article_year}-{current_month:02d}-01"
+                items.append(_make_item(line, current_company, "food",
+                                        increase_date, "値上げまとめ（neage.hateblo.jp）"))
 
     return items
 

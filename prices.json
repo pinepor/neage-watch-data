@@ -1036,17 +1036,6 @@
       "referencePrice": 250
     },
     {
-      "id": "ca3c2dee-8b03-5a2f-b5f8-6dec1f1d0b13",
-      "productName": "など",
-      "company": "江崎グリコ",
-      "category": "food",
-      "increaseRate": 0.08,
-      "increaseDate": "2026-05-01",
-      "reason": "原材料・物流費高騰",
-      "source": "値上げまとめ（neage.hateblo.jp）",
-      "referencePrice": 250
-    },
-    {
       "id": "36c0eb99-5fe3-5b99-9cce-521665a46183",
       "productName": "はるさめ（例：スープはるさめ 182円→200円）",
       "company": "エースコック",
