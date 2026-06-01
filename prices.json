@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-06-01",
   "items": [
     {
       "id": "d10e46c0-8a4c-5544-88e4-9b5574fd3324",
@@ -1410,6 +1410,17 @@
       "referencePrice": 300
     },
     {
+      "id": "8fdfc4e1-a5e3-586d-adac-eb4814644148",
+      "productName": "電気・ガス料金 中東影響でほとんどの会社で値上がりへ",
+      "company": "6月",
+      "category": "utilities",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-06-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 6000
+    },
+    {
       "id": "a1b2c3d4-0001-0001-0001-000000000004",
       "productName": "冷凍食品 各種",
       "company": "ニチレイ・味の素冷凍食品 他",
@@ -1564,9 +1575,9 @@
       "referencePrice": 250
     },
     {
-      "id": "999d4439-0c12-5970-8634-51ac93b4ae9b",
-      "productName": "即席カップ麺（サッポロ一番カップスター",
-      "company": "サンヨー食品",
+      "id": "f26a7cfb-2f7e-5256-b2fc-6a2d87e69e02",
+      "productName": "食パン（ロイヤルブレッド、ダブルソフト、超芳醇など",
+      "company": "山崎製パン（ヤマザキ）",
       "category": "food",
       "increaseRate": 0.08,
       "increaseDate": "2026-07-01",
@@ -1575,9 +1586,9 @@
       "referencePrice": 250
     },
     {
-      "id": "651be88f-f999-5426-ab02-28642fdd5915",
-      "productName": "など）",
-      "company": "サンヨー食品",
+      "id": "e71b32c9-6b0a-518f-b924-d01be76dc750",
+      "productName": "菓子パン（高級つぶあん、チョコチップスナックなど）",
+      "company": "山崎製パン（ヤマザキ）",
       "category": "food",
       "increaseRate": 0.08,
       "increaseDate": "2026-07-01",
@@ -1586,9 +1597,141 @@
       "referencePrice": 250
     },
     {
-      "id": "6eccae33-0047-59fd-acf7-8e784ddd0167",
-      "productName": "本格焼酎（芋・米）",
-      "company": "霧島酒造",
+      "id": "81fb5986-a67e-51a9-8b02-b8dbf59537cd",
+      "productName": "和菓子、洋菓子（まるごとバナナ、豆大福など）",
+      "company": "山崎製パン（ヤマザキ）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "46a7e278-b146-57d3-bbb6-44f9d2d0337b",
+      "productName": "食事パン（超熟など）",
+      "company": "敷島製パン（Pasco）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "99a4c0a9-e5ed-59d4-9bd3-d9df390c203a",
+      "productName": "菓子パン",
+      "company": "敷島製パン（Pasco）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "7c4ae2b9-5f4e-5c74-b0d8-7e0fb5051abc",
+      "productName": "食パン",
+      "company": "第一屋製パン（第一パン）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "b21a44ae-e863-5a8c-8000-e12baa5ded01",
+      "productName": "菓子パン",
+      "company": "第一屋製パン（第一パン）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "8d52a7d3-8453-51e8-8864-053a4c8d9639",
+      "productName": "和菓子",
+      "company": "第一屋製パン（第一パン）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "2ed66f0f-0ca4-5851-9d32-99008f71067b",
+      "productName": "洋菓子",
+      "company": "第一屋製パン（第一パン）",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "7671d7a3-77ce-5daa-9713-fab5d8c9fa9f",
+      "productName": "食パン",
+      "company": "オイシス",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "817b5f29-dbe1-50cc-8072-e55f76e341c8",
+      "productName": "菓子パン",
+      "company": "オイシス",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "83a608ca-74b6-55bf-b1a4-eac0f6f7b9d9",
+      "productName": "和洋菓子",
+      "company": "オイシス",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "2d515621-d32d-5262-95a7-38a6190d28d8",
+      "productName": "ハム",
+      "company": "伊藤ハム",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "bebd3e82-5fc4-59ab-a0e6-521f506bd524",
+      "productName": "ソーセージ",
+      "company": "伊藤ハム",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "eac37795-0dd8-5a6f-b7db-e65b2b7905e9",
+      "productName": "調理加工食品",
+      "company": "伊藤ハム",
       "category": "food",
       "increaseRate": 0.08,
       "increaseDate": "2026-07-01",
@@ -1619,12 +1762,122 @@
       "referencePrice": 250
     },
     {
+      "id": "999d4439-0c12-5970-8634-51ac93b4ae9b",
+      "productName": "即席カップ麺（サッポロ一番カップスター",
+      "company": "サンヨー食品",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "651be88f-f999-5426-ab02-28642fdd5915",
+      "productName": "など）",
+      "company": "サンヨー食品",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "c39caee0-99ba-55f5-9ee9-d497bcc818c3",
+      "productName": "スナック菓子（ピュアポテト、スティックカラムーチョ",
+      "company": "湖池屋",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "bbb7c5ae-b4a4-50cf-a708-69137448d04b",
+      "productName": "など）",
+      "company": "湖池屋",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
       "id": "2fc5fa4c-3e0a-5c9f-abb5-d63d2b928eac",
       "productName": "麦茶リーフ商品（ティーバッグ茶、顆粒茶）",
       "company": "伊藤園",
       "category": "food",
       "increaseRate": 0.08,
       "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "b3c61ada-08b0-5711-9182-ac9d6c15540f",
+      "productName": "乳酸菌飲料（ピルクル65ml×10本入りなど）",
+      "company": "日清ヨーク",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "6eccae33-0047-59fd-acf7-8e784ddd0167",
+      "productName": "本格焼酎（芋・米）",
+      "company": "霧島酒造",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "6919dab3-9a78-50d5-baff-8cffc8a8631e",
+      "productName": "小麦粉やパスタなど値上げ 中東影響が一因",
+      "company": "ニップン",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-07-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "67f77f75-6cf0-53dc-ab28-c624d317a1d0",
+      "productName": "シーチキン（ツナ缶）",
+      "company": "はごろもフーズ",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "65185511-ebd6-5ad7-93c1-b88d1c3b64d2",
+      "productName": "お惣菜（さばの味噌煮、いわしの煮付け）",
+      "company": "はごろもフーズ",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "e34e3bbb-73d8-5119-a661-229e003df350",
+      "productName": "鰹節",
+      "company": "はごろもフーズ",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-08-01",
       "reason": "原材料・物流費高騰",
       "source": "値上げまとめ（neage.hateblo.jp）",
       "referencePrice": 250
@@ -1729,9 +1982,53 @@
       "referencePrice": 250
     },
     {
+      "id": "93ece9fc-015a-52b7-98bb-be6b8c48926f",
+      "productName": "エリエール",
+      "company": "大王製紙",
+      "category": "daily",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 400
+    },
+    {
+      "id": "c8659697-f9da-5685-9d68-5cde4890519d",
+      "productName": "ポテトチップス",
+      "company": "カルビー",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-09-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "bce228b5-fac6-5612-985e-16318d178fc5",
+      "productName": "じゃがりこ",
+      "company": "カルビー",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-09-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
       "id": "0895130c-6fb6-5fa7-a8f8-7672487f95d2",
       "productName": "豆乳",
       "company": "キッコーマン",
+      "category": "food",
+      "increaseRate": 0.08,
+      "increaseDate": "2026-09-01",
+      "reason": "原材料・物流費高騰",
+      "source": "値上げまとめ（neage.hateblo.jp）",
+      "referencePrice": 250
+    },
+    {
+      "id": "db5d50a6-226b-569f-a2c6-1378c9c746ee",
+      "productName": "ポッカレモン100 など",
+      "company": "ポッカサッポロフード&amp;ビバレッジ",
       "category": "food",
       "increaseRate": 0.08,
       "increaseDate": "2026-09-01",
