@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01",
+  "lastUpdated": "2026-07-01",
   "items": [
     {
       "id": "d10e46c0-8a4c-5544-88e4-9b5574fd3324",
@@ -1991,6 +1991,39 @@
       "reason": "原材料・物流費高騰",
       "source": "値上げまとめ（neage.hateblo.jp）",
       "referencePrice": 400
+    },
+    {
+      "id": "d2b10db7-b9f4-5c6d-980e-f9f380dd0a3e",
+      "productName": "きょうから引き上げ 1人当たり1000円が3000円に",
+      "company": "“出国税”",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "720bf2df-8632-5854-ad6c-0a1c6e04d1b5",
+      "productName": "5キロ税込み3590円 5週ぶり値上がり",
+      "company": "スーパーのコメ平均価格",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "0716adc3-1d28-593f-85c2-18dc4e892f71",
+      "productName": "ポテトチップスなど値上げ ことしに入って4回目",
+      "company": "カルビー",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-08-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
     },
     {
       "id": "c8659697-f9da-5685-9d68-5cde4890519d",
