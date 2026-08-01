@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-01",
+  "lastUpdated": "2026-08-01",
   "items": [
     {
       "id": "d10e46c0-8a4c-5544-88e4-9b5574fd3324",
@@ -2079,6 +2079,28 @@
       "reason": "原材料・物流費高騰",
       "source": "値上げまとめ（neage.hateblo.jp）",
       "referencePrice": 250
+    },
+    {
+      "id": "04ea3ff0-9519-588f-8a0b-e6245a981248",
+      "productName": "入園料値上げの動き相次ぐ",
+      "company": "ディズニーのチケット1万2000円超に",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-09-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "bf838f80-901f-5a71-9dd9-61fce0c20978",
+      "productName": "いくぶん値上がり 原油の先物価格下落に伴い",
+      "company": "円相場",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-09-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
     }
   ]
 }
