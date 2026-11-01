@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-01",
+  "lastUpdated": "2026-11-01",
   "items": [
     {
       "id": "d10e46c0-8a4c-5544-88e4-9b5574fd3324",
@@ -2164,6 +2164,39 @@
       "category": "other",
       "increaseRate": 0.05,
       "increaseDate": "2026-11-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "5dd324ee-eb80-509d-95bb-96bd43661812",
+      "productName": "全国の景気判断据え置き 関東と東海は引き上げ",
+      "company": "財務省",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-12-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "4f1ebe0c-bc0a-5b36-aec6-136a1f768587",
+      "productName": "一時1ドル＝155円台前半まで値上がり",
+      "company": "円相場",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-12-01",
+      "reason": "原材料・物流費高騰",
+      "source": "NHK経済ニュース",
+      "referencePrice": 300
+    },
+    {
+      "id": "78dd3938-e909-52d9-b024-927a42000a0a",
+      "productName": "一時1ドル155円台まで値上がり 円買いドル売り進む",
+      "company": "円相場",
+      "category": "other",
+      "increaseRate": 0.05,
+      "increaseDate": "2026-12-01",
       "reason": "原材料・物流費高騰",
       "source": "NHK経済ニュース",
       "referencePrice": 300
